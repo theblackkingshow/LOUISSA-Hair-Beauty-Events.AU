@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Mark Event Decorating</title>
+    <meta name="description" content="Book a consultation with Mark Event Decorating." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body data-page="contact">
+    <div class="announcement-bar">
+      <a href="contact.html">End of financial year offer — 10% off all packages. Book now.</a>
+      <div class="announcement-contacts">
+        <a href="mailto:support@example.com">support@example.com</a>
+        <a href="tel:+61417713516">+61 417713516</a>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="topline">
+        <a class="brand" href="index.html" aria-label="Mark Event Decorating home">
+          <span class="brand-mark">MED</span>
+          <span>
+            <strong>Mark Event</strong>
+            <small>Decorating</small>
+          </span>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+          <a class="button button-secondary" href="contact.html">Book Consultation</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section-shell hero slim-hero">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Contact</span>
+          <h1>Ready to style your event?</h1>
+          <p class="lede">Tell us about your celebration and we’ll craft a styling proposal made just for you.</p>
+        </div>
+        <div class="hero-visual reveal contact-visual">
+          <iframe
+            title="Sydney address map"
+            src="https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1s112+Crown+Street,+Sydney+NSW+2010,+Australia"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </section>
+
+      <section class="section-shell contact-layout reveal">
+        <div class="contact-panel">
+          <span class="eyebrow">Book a consultation</span>
+          <h2>Tell us a little about your celebration</h2>
+          <form class="contact-form">
+            <label>
+              Name
+              <input type="text" name="name" placeholder="Your name" />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="you@example.com" />
+            </label>
+            <label>
+              Event type
+              <input type="text" name="event" placeholder="Wedding, corporate launch, birthday..." />
+            </label>
+            <label>
+              Details
+              <textarea name="details" rows="5" placeholder="Tell us about the date, venue, and styling ideas."></textarea>
+            </label>
+            <button class="button" type="submit">Request consultation</button>
+          </form>
+        </div>
+
+        <aside class="contact-panel contact-details">
+          <h2>Contact details</h2>
+          <div class="detail-list">
+            <a href="mailto:support@example.com">support@example.com</a>
+            <a href="tel:+61280001234">+61 2 8000 1234</a>
+            <p>112 Crown Street, Sydney NSW 2010, Australia</p>
+          </div>
+          <p>
+            We work across Australia and are happy to help with weddings, private parties, and
+            corporate functions.
+          </p>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid section-shell">
+        <div>
+          <a class="brand footer-brand" href="index.html">
+            <span class="brand-mark">MED</span>
+            <span>
+              <strong>Mark Event Decorating</strong>
+              <small>Bespoke event styling, floral design, and decoration for unforgettable celebrations across Australia.</small>
+            </span>
+          </a>
+          <div class="social-links">
+            <a href="https://instagram.com">Instagram</a>
+            <a href="https://facebook.com">Facebook</a>
+          </div>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <a href="mailto:support@example.com">support@example.com</a>
+          <a href="tel:+61417713516">+61 417713516</a>
+          <p>112 Crown Street, Sydney NSW 2010, Australia</p>
+        </div>
+      </div>
+      <div class="footer-bottom section-shell">
+        <span>© <span data-year></span> Mark Event Decorating. All rights reserved.</span>
+        <span>Built with Asher</span>
+      </div>
+    </footer>
+  </body>
+</html>
