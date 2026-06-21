@@ -582,6 +582,11 @@ main {
   padding-top: 18px;
   padding-bottom: 18px;
   box-shadow: none;
+  flex-wrap: wrap;
+}
+
+.footer-bottom .built-with {
+  font-weight: 700;
 }
 
 .reveal {
