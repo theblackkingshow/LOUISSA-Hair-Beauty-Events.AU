@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salon & Beauty | Mark Event & Beauty Studio</title>
+    <meta name="description" content="Premium salon and beauty services with online booking for hair, makeup, nails, facials, spa treatments, and barber services." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="announcement-bar">
+      <a href="#booking">Book salon appointments online in under a minute.</a>
+      <div class="announcement-contacts"><a href="https://wa.me/61417713516">WhatsApp</a><a href="tel:+61417713516">+61 4177 13516</a></div>
+    </div>
+    <header class="site-header">
+      <div class="topline">
+        <a class="brand" href="index.html"><span class="brand-mark">MES</span><span><strong>Mark Event & Beauty</strong><small>Salon appointments and event beauty</small></span></a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <a href="index.html">Events</a><a href="salon.html">Salon</a><a href="services.html">Services</a><a href="portfolio.html">Gallery</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="button button-secondary" href="#booking">Book Appointment</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" style="--hero-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1800&q=84')">
+        <div class="hero-inner reveal">
+          <span class="eyebrow">Premium salon and beauty studio</span>
+          <h1>Beauty appointments with a luxury finish.</h1>
+          <p class="lede">Hair styling, colour, braiding, makeup, nails, facials, spa treatments, and barber services for everyday polish, bridal parties, and event-ready confidence.</p>
+          <div class="button-row"><a class="button button-secondary" href="#booking">Book Appointment</a><a class="button button-ghost" href="#beauty-gallery">Before & After</a></div>
+        </div>
+      </section>
+
+      <section class="section section-shell booking-grid" id="booking">
+        <aside class="booking-panel reveal">
+          <span class="eyebrow">Online booking</span>
+          <h2>Reserve your appointment.</h2>
+          <p>Select your service, stylist, date, and time. A confirmation will appear instantly and our team will follow up to finalize details.</p>
+          <div class="confirmation" data-booking-confirmation tabindex="-1" aria-live="polite"></div>
+        </aside>
+        <form class="booking-panel booking-form reveal" data-booking-form>
+          <label>Service
+            <select name="service" required>
+              <option>Hair Styling - $95</option><option>Hair Colouring - from $180</option><option>Braiding - from $120</option><option>Makeup - $135</option><option>Nails - from $75</option><option>Facial - $110</option><option>Spa Treatment - $160</option><option>Barber Service - $55</option>
+            </select>
+          </label>
+          <label>Stylist
+            <select name="stylist" required><option>Amina - Bridal Hair & Makeup</option><option>Chloe - Colour Specialist</option><option>Maya - Nails & Facials</option><option>Daniel - Barber & Styling</option></select>
+          </label>
+          <label>Date<input type="date" name="date" required /></label>
+          <label>Time<input type="time" name="time" required /></label>
+          <label>Name<input name="name" autocomplete="name" required /></label>
+          <label>Phone or email<input name="contact" autocomplete="email" required /></label>
+          <button class="button button-secondary" type="submit">Book Appointment</button>
+        </form>
+      </section>
+
+      <section class="section section-shell">
+        <div class="section-heading center reveal"><span class="eyebrow">Services and pricing</span><h2>Beauty services for every occasion.</h2></div>
+        <div class="card-grid cards-4">
+          <article class="service-card reveal"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=900&q=80" alt="Hair styling service" loading="lazy" /><div class="service-card-body"><h3>Hair Styling</h3><p>Blow waves, curls, upstyles, bridal hair, and event styling from $95.</p></div></article>
+          <article class="service-card reveal"><img src="https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=900&q=80" alt="Hair colour service" loading="lazy" /><div class="service-card-body"><h3>Hair Colouring</h3><p>Gloss, toner, highlights, balayage, and full colour from $180.</p></div></article>
+          <article class="service-card reveal"><img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=900&q=80" alt="Braiding service" loading="lazy" /><div class="service-card-body"><h3>Braiding</h3><p>Protective braids, event braids, and detailed finish work from $120.</p></div></article>
+          <article class="service-card reveal"><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=80" alt="Makeup service" loading="lazy" /><div class="service-card-body"><h3>Makeup</h3><p>Soft glam, bridal makeup, photography makeup, and evening looks from $135.</p></div></article>
+          <article class="service-card reveal"><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=80" alt="Nail service" loading="lazy" /><div class="service-card-body"><h3>Nails</h3><p>Manicures, gel polish, nail art, and event-ready finishes from $75.</p></div></article>
+          <article class="service-card reveal"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80" alt="Facial service" loading="lazy" /><div class="service-card-body"><h3>Facials</h3><p>Hydrating, brightening, and calming skin treatments from $110.</p></div></article>
+          <article class="service-card reveal"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=80" alt="Spa treatment service" loading="lazy" /><div class="service-card-body"><h3>Spa Treatments</h3><p>Relaxation packages, massage rituals, and pre-event glow treatments from $160.</p></div></article>
+          <article class="service-card reveal"><img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?auto=format&fit=crop&w=900&q=80" alt="Barber service" loading="lazy" /><div class="service-card-body"><h3>Barber Services</h3><p>Cuts, fades, beard shaping, and groom styling from $55.</p></div></article>
+        </div>
+      </section>
+
+      <section class="section section-shell split" id="beauty-gallery">
+        <div class="copy-block reveal">
+          <span class="eyebrow">Before and after</span>
+          <h2>Refined transformations for real clients.</h2>
+          <p>Beauty work is designed to photograph well, last through the event, and still feel like you. Bridal parties and group appointments can be coordinated with event styling.</p>
+          <div class="service-list">
+            <div class="service-row"><span>Bridal preview</span><strong>from $165</strong></div>
+            <div class="service-row"><span>Event hair and makeup package</span><strong>from $245</strong></div>
+            <div class="service-row"><span>Group bookings</span><strong>custom quote</strong></div>
+          </div>
+        </div>
+        <div class="before-after reveal">
+          <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=900&q=80" alt="Before beauty styling portrait" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1509967419530-da38b4704bc6?auto=format&fit=crop&w=900&q=80" alt="After beauty styling portrait" loading="lazy" />
+        </div>
+      </section>
+
+      <section class="section section-shell">
+        <div class="section-heading center reveal"><span class="eyebrow">Team</span><h2>Artists, stylists, and skin specialists.</h2></div>
+        <div class="card-grid cards-4">
+          <article class="team-card reveal"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=700&q=80" alt="Amina, bridal stylist" loading="lazy" /><div class="service-card-body"><h3>Amina</h3><p>Bridal hair and makeup lead.</p></div></article>
+          <article class="team-card reveal"><img src="https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=700&q=80" alt="Chloe, colour specialist" loading="lazy" /><div class="service-card-body"><h3>Chloe</h3><p>Colour and styling specialist.</p></div></article>
+          <article class="team-card reveal"><img src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=700&q=80" alt="Maya, nail and facial specialist" loading="lazy" /><div class="service-card-body"><h3>Maya</h3><p>Nails, facials, and spa treatments.</p></div></article>
+          <article class="team-card reveal"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=80" alt="Daniel, barber stylist" loading="lazy" /><div class="service-card-body"><h3>Daniel</h3><p>Barber services and grooming.</p></div></article>
+        </div>
+      </section>
+
+      <section class="section section-shell contact-grid">
+        <div class="contact-panel reveal">
+          <span class="eyebrow">Opening hours</span>
+          <h2>Visit the salon</h2>
+          <ul class="hours-list"><li><span>Monday</span><strong>Closed</strong></li><li><span>Tuesday - Friday</span><strong>9:00 - 18:00</strong></li><li><span>Saturday</span><strong>8:00 - 17:00</strong></li><li><span>Sunday</span><strong>By appointment</strong></li></ul>
+        </div>
+        <div class="contact-panel reveal">
+          <span class="eyebrow">Reviews</span>
+          <h2>Client love</h2>
+          <p>"My makeup lasted all day and my hair still looked perfect after dancing. The online booking was so easy."</p>
+          <p>"The salon team handled our bridal party and worked beautifully with the event styling crew."</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid section-shell">
+        <div><a class="brand" href="index.html"><span class="brand-mark">MES</span><span><strong>Mark Event & Beauty</strong><small>Luxury event decoration and premium salon services.</small></span></a><p>Beauty appointments, bridal glam, and celebration styling in one studio.</p><div class="social-links"><a href="https://instagram.com">Instagram</a><a href="https://facebook.com">Facebook</a><a href="https://tiktok.com">TikTok</a></div></div>
+        <div><h3>Quick links</h3><ul class="footer-links"><li><a href="index.html">Events</a></li><li><a href="salon.html">Salon</a></li><li><a href="portfolio.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div><h3>Contact</h3><ul class="footer-links"><li><a href="mailto:support@example.com">support@example.com</a></li><li><a href="tel:+61417713516">+61 4177 13516</a></li><li><a href="https://wa.me/61417713516">WhatsApp booking</a></li><li>112 Crown Street, Sydney NSW</li></ul></div>
+        <form class="newsletter-form" data-soft-submit><label>Newsletter<input type="email" placeholder="Email address" required /></label><button class="button button-secondary" type="submit">Sign Up</button><p data-form-message aria-live="polite"></p></form>
+      </div>
+      <div class="footer-bottom section-shell"><span>© <span data-year></span> Mark Event & Beauty Studio. All rights reserved.</span><span>Salon and event appointments available.</span></div>
+    </footer>
+  </body>
+</html>
