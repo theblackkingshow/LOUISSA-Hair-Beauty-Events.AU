@@ -60,6 +60,69 @@ if (bookingForm && confirmation) {
   });
 }
 
+const packageBuilder = document.querySelector('[data-package-builder]');
+
+if (packageBuilder) {
+  const brandNode = document.querySelector('.brand strong');
+  const brandName = brandNode && brandNode.textContent ? brandNode.textContent.trim() : 'the studio';
+  const packageName = packageBuilder.querySelector('[data-package-name]');
+  const packageTotal = packageBuilder.querySelector('[data-package-total]');
+  const packageNote = packageBuilder.querySelector('[data-package-note]');
+  const packageList = packageBuilder.querySelector('[data-package-list]');
+  const guestCount = packageBuilder.querySelector('[data-guest-count]');
+  const eventType = packageBuilder.querySelector('[data-event-type]');
+  const whatsappLink = packageBuilder.querySelector('[data-package-whatsapp]');
+  const contactLink = packageBuilder.querySelector('[data-package-contact]');
+
+  const updatePackage = () => {
+    const selectedBase = packageBuilder.querySelector('input[name="basePackage"]:checked');
+    const selectedExtras = Array.from(packageBuilder.querySelectorAll('input[type="checkbox"]:checked'));
+    const guests = Math.max(Number(guestCount.value) || 10, 10);
+    const event = eventType.value;
+    const items = [selectedBase.value, ...selectedExtras.map(item => item.value)];
+
+    packageName.textContent = `${event} - ${selectedBase.value}`;
+    packageTotal.textContent = 'Tailored quote';
+    packageNote.textContent = `Estimated for ${guests} guests. Final quote depends on venue access, travel, hire items, and floral availability.`;
+    packageList.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+
+    const message = [
+      `Hello ${brandName}, I would like a quote for this package.`,
+      '',
+      `Event type: ${event}`,
+      `Guest count: ${guests}`,
+      `Base package: ${selectedBase.value}`,
+      `Add-ons: ${selectedExtras.map(item => item.value).join(', ') || 'None'}`,
+      '',
+      'Please confirm availability and final quote.',
+      'Event date:',
+      'Venue/location:',
+    ].join('\n');
+
+    whatsappLink.href = `https://wa.me/61417713516?text=${encodeURIComponent(message)}`;
+    contactLink.href = `contact.html?package=${encodeURIComponent(message)}`;
+  };
+
+  packageBuilder.addEventListener('input', updatePackage);
+  packageBuilder.addEventListener('change', updatePackage);
+  updatePackage();
+}
+
+const packageMessage = new URLSearchParams(window.location.search).get('package');
+if (packageMessage) {
+  const messageField = document.querySelector('.contact-form textarea[name="message"]');
+  const typeField = document.querySelector('.contact-form select[name="type"], .contact-form select[name="service"]');
+  if (messageField) {
+    messageField.value = packageMessage;
+  }
+  if (typeField) {
+    const option = Array.from(typeField.options).find(item => /package|quote/i.test(item.textContent));
+    if (option) {
+      typeField.value = option.value;
+    }
+  }
+}
+
 for (const form of document.querySelectorAll('[data-soft-submit]')) {
   form.addEventListener('submit', event => {
     event.preventDefault();
