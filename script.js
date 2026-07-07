@@ -152,14 +152,16 @@ for (const form of document.querySelectorAll('[data-soft-submit]')) {
   const fallback = 'assets/site-images/11-warm-string-lights-candles-event-ambient-lighting.jpg';
 
   const applyFallback = img => {
-    if (!img || img.__fallbackApplied) {
+    if (!img || img.__fallbackApplied || img.src.endsWith(fallback)) {
       return;
     }
+
     img.__fallbackApplied = true;
+    img.onerror = null;
     img.src = fallback;
   };
 
-  // Replace broken <img> sources and handle images that failed to load cleanly
+  // Replace only genuinely broken <img> sources and avoid cascading replacement.
   document.querySelectorAll('img').forEach(img => {
     img.addEventListener('error', () => applyFallback(img));
     img.addEventListener('load', () => {
