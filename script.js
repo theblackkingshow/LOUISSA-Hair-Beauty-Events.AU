@@ -77,21 +77,30 @@ if (packageBuilder) {
   const updatePackage = () => {
     const selectedBase = packageBuilder.querySelector('input[name="basePackage"]:checked');
     const selectedExtras = Array.from(packageBuilder.querySelectorAll('input[type="checkbox"]:checked'));
-    const guests = Math.max(Number(guestCount.value) || 10, 10);
-    const event = eventType.value;
-    const items = [selectedBase.value, ...selectedExtras.map(item => item.value)];
+    const guests = Math.max(Number(guestCount?.value) || 10, 10);
+    const event = eventType?.value || 'Event';
+    const baseValue = selectedBase ? selectedBase.value : 'Custom package';
+    const items = selectedBase ? [baseValue, ...selectedExtras.map(item => item.value)] : selectedExtras.map(item => item.value);
 
-    packageName.textContent = `${event} - ${selectedBase.value}`;
-    packageTotal.textContent = 'Tailored quote';
-    packageNote.textContent = `Estimated for ${guests} guests. Final quote depends on venue access, travel, hire items, and floral availability.`;
-    packageList.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+    if (packageName) {
+      packageName.textContent = `${event} - ${baseValue}`;
+    }
+    if (packageTotal) {
+      packageTotal.textContent = 'Tailored quote';
+    }
+    if (packageNote) {
+      packageNote.textContent = `Estimated for ${guests} guests. Final quote depends on venue access, travel, hire items, and floral availability.`;
+    }
+    if (packageList) {
+      packageList.innerHTML = items.length > 0 ? items.map(item => `<li>${item}</li>`).join('') : '<li>No package options selected</li>';
+    }
 
     const message = [
       `Hello ${brandName}, I would like a quote for this package.`,
       '',
       `Event type: ${event}`,
       `Guest count: ${guests}`,
-      `Base package: ${selectedBase.value}`,
+      `Base package: ${baseValue}`,
       `Add-ons: ${selectedExtras.map(item => item.value).join(', ') || 'None'}`,
       '',
       'Please confirm availability and final quote.',
@@ -99,8 +108,12 @@ if (packageBuilder) {
       'Venue/location:',
     ].join('\n');
 
-    whatsappLink.href = `https://wa.me/61417713516?text=${encodeURIComponent(message)}`;
-    contactLink.href = `contact.html?package=${encodeURIComponent(message)}`;
+    if (whatsappLink) {
+      whatsappLink.href = `https://wa.me/61417713516?text=${encodeURIComponent(message)}`;
+    }
+    if (contactLink) {
+      contactLink.href = `contact.html?package=${encodeURIComponent(message)}`;
+    }
   };
 
   packageBuilder.addEventListener('input', updatePackage);
@@ -133,3 +146,50 @@ for (const form of document.querySelectorAll('[data-soft-submit]')) {
     form.reset();
   });
 }
+
+// Fallbacks for broken or missing images (replaces with a working gallery image)
+(function() {
+  const fallback = 'assets/site-images/11-warm-string-lights-candles-event-ambient-lighting.jpg';
+
+  const applyFallback = img => {
+    if (!img || img.__fallbackApplied) {
+      return;
+    }
+    img.__fallbackApplied = true;
+    img.src = fallback;
+  };
+
+  // Replace broken <img> sources and handle images that failed to load cleanly
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('error', () => applyFallback(img));
+    img.addEventListener('load', () => {
+      if (img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
+        applyFallback(img);
+      }
+    });
+
+    if (img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
+      applyFallback(img);
+    }
+  });
+
+  // Preload and validate hero/background images defined by CSS var --hero-image
+  const heroNodes = Array.from(document.querySelectorAll('[style*="--hero-image"]'));
+  heroNodes.forEach(node => {
+    try {
+      const style = getComputedStyle(node).getPropertyValue('--hero-image');
+      const match = style && style.match(/url\(["']?(.*?)["']?\)/);
+      const url = match ? match[1] : null;
+      if (url) {
+        const img = new Image();
+        img.onload = () => {};
+        img.onerror = () => {
+          node.style.setProperty('--hero-image', `url('${fallback}')`);
+        };
+        img.src = url;
+      }
+    } catch (e) {
+      // ignore
+    }
+  });
+})();
