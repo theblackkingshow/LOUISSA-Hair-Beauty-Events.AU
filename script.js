@@ -73,12 +73,21 @@ if (bookingForm && confirmation) {
     event.preventDefault();
     const formData = new FormData(bookingForm);
     const service = formData.get('service');
-    const stylist = formData.get('stylist');
     const date = formData.get('date');
     const time = formData.get('time');
+    const name = formData.get('name');
+    const contact = formData.get('contact');
+    
+    const emailSubject = `Salon Booking Request - ${date} at ${time}`;
+    const emailBody = `Hello,\n\nI would like to book a salon appointment with the following details:\n\nService: ${service}\nDate: ${date}\nTime: ${time}\nName: ${name}\nContact: ${contact}\n\nPlease confirm my booking.\n\nThank you!`;
+    
+    const mailtoLink = `mailto:louissahairbeautyandevent@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    window.location.href = mailtoLink;
+    
     confirmation.innerHTML = `
-      <strong>Booking request received.</strong>
-      <p>Your ${service} appointment with ${stylist} is reserved for ${date} at ${time}. We will confirm by phone or email shortly.</p>
+      <strong>Opening email client...</strong>
+      <p>Your booking details have been prepared. Your email client will open to send the booking request to our team. If it doesn't open, click <a href="${mailtoLink}">here</a> or <a href="tel:+61417713516">call us at +61 4177 13516</a>.</p>
     `;
     confirmation.classList.add('is-visible');
     confirmation.focus();
@@ -164,11 +173,24 @@ if (packageMessage) {
 for (const form of document.querySelectorAll('[data-soft-submit]')) {
   form.addEventListener('submit', event => {
     event.preventDefault();
-    const message = form.querySelector('[data-form-message]');
-    if (message) {
-      message.textContent = 'Thank you. Your enquiry has been received and our team will be in touch shortly.';
+    const formData = new FormData(form);
+    const name = formData.get('name') || 'Guest';
+    const email = formData.get('email') || 'no-email-provided';
+    const phone = formData.get('phone') || 'not provided';
+    const type = formData.get('type') || 'Enquiry';
+    const message = formData.get('message') || 'No message provided';
+    
+    const emailSubject = `Enquiry: ${type}`;
+    const emailBody = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nType: ${type}\n\nMessage:\n${message}`;
+    
+    const mailtoLink = `mailto:louissahairbeautyandevent@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    
+    window.location.href = mailtoLink;
+    
+    const messageEl = form.querySelector('[data-form-message]');
+    if (messageEl) {
+      messageEl.textContent = 'Opening email client to send your enquiry. If it doesn\'t open, you can also call us at +61 4177 13516.';
     }
-    form.reset();
   });
 }
 
