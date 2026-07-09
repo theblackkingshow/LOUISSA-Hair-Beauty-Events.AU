@@ -189,18 +189,41 @@ for (const form of document.querySelectorAll('[data-soft-submit]')) {
       sessionStorage.removeItem('bookingDetails');
     }
     
-    const emailSubject = `${type} - ${name}`;
-    const emailBody = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nType: ${type}\n\nMessage:\n${fullMessage}`;
-    
-    const mailtoLink = `mailto:louissahairbeautyandevent@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-    
     const messageEl = form.querySelector('[data-form-message]');
     if (messageEl) {
-      messageEl.innerHTML = `Your enquiry is being sent. Your email client is opening now...`;
+      messageEl.innerHTML = `<strong>Sending your enquiry...</strong>`;
     }
     
-    // Open email automatically
-    window.location.href = mailtoLink;
+    // Send email via Formspree
+    fetch('https://formspree.io/f/xyzgbjwv', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        phone: phone,
+        type: type,
+        message: fullMessage
+      })
+    })
+    .then(response => {
+      if (response.ok) {
+        if (messageEl) {
+          messageEl.innerHTML = `<strong>✅ Email sent successfully!</strong><p>Thank you! We'll get back to you within 24 hours.</p>`;
+        }
+        form.reset();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    })
+    .catch(error => {
+      if (messageEl) {
+        messageEl.innerHTML = `<strong>⚠️ Error sending email</strong><p>Please try again or contact us directly on WhatsApp.</p>`;
+      }
+    });
   });
 }
 
