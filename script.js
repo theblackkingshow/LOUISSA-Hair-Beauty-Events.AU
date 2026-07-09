@@ -78,22 +78,20 @@ if (bookingForm && confirmation) {
     const name = formData.get('name');
     const contact = formData.get('contact');
     
-    const emailSubject = `Salon Booking Request - ${date} at ${time}`;
-    const emailBody = `Hello,\n\nI would like to book a salon appointment with the following details:\n\nService: ${service}\nDate: ${date}\nTime: ${time}\nName: ${name}\nContact: ${contact}\n\nPlease confirm my booking.\n\nThank you!`;
+    // Store booking details and redirect to contact form
+    const bookingDetails = `Service: ${service}\nDate: ${date}\nTime: ${time}\nName: ${name}\nContact: ${contact}`;
+    sessionStorage.setItem('bookingDetails', bookingDetails);
     
-    const mailtoLink = `mailto:louissahairbeautyandevent@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-    
-    // Show confirmation first
     confirmation.innerHTML = `
-      <strong>Sending Your Booking...</strong>
-      <p>Your email is opening now with your <strong>${service}</strong> appointment details for <strong>${date} at ${time}</strong>.</p>
-      <p style="margin-top: 12px;">Just click "Send" in your email client to complete your booking.</p>
+      <strong>Redirecting to Enquiry Form</strong>
+      <p>Your booking details will be included in the enquiry form. Redirecting now...</p>
     `;
     confirmation.classList.add('is-visible');
-    confirmation.focus();
     
-    // Open email automatically
-    window.location.href = mailtoLink;
+    // Redirect to contact form after 1 second
+    setTimeout(() => {
+      window.location.href = 'contact.html#booking';
+    }, 1000);
   });
 }
 
@@ -183,14 +181,22 @@ for (const form of document.querySelectorAll('[data-soft-submit]')) {
     const type = formData.get('type') || 'Enquiry';
     const message = formData.get('message') || 'No message provided';
     
-    const emailSubject = `Enquiry: ${type}`;
-    const emailBody = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nType: ${type}\n\nMessage:\n${message}`;
+    // Include booking details if available
+    let fullMessage = message;
+    const bookingDetails = sessionStorage.getItem('bookingDetails');
+    if (bookingDetails) {
+      fullMessage = `Booking Details:\n${bookingDetails}\n\nAdditional Message:\n${message}`;
+      sessionStorage.removeItem('bookingDetails');
+    }
+    
+    const emailSubject = `${type} - ${name}`;
+    const emailBody = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nType: ${type}\n\nMessage:\n${fullMessage}`;
     
     const mailtoLink = `mailto:louissahairbeautyandevent@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
     
     const messageEl = form.querySelector('[data-form-message]');
     if (messageEl) {
-      messageEl.innerHTML = `Your enquiry is being sent. Your email client is opening now with your message.`;
+      messageEl.innerHTML = `Your enquiry is being sent. Your email client is opening now...`;
     }
     
     // Open email automatically
