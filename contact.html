@@ -94,18 +94,18 @@
         <div class="contact-panel reveal">
           <span class="eyebrow">Enquiry form</span>
           <h2>Tell us what you need.</h2>
-          <form class="contact-form" id="contact-form" data-soft-submit>
+          <form class="contact-form" id="contact-form" action="https://formspree.io/f/mdarryzb" method="POST">
             <label>
               Name
-              <input name="name" autocomplete="name" required />
+              <input name="name" type="text" autocomplete="name" required />
             </label>
             <label>
               Email
-              <input type="email" name="email" autocomplete="email" required />
+              <input name="email" type="email" autocomplete="email" required />
             </label>
             <label>
               Phone
-              <input name="phone" autocomplete="tel" />
+              <input name="phone" type="tel" autocomplete="tel" />
             </label>
             <label>
               Enquiry type
@@ -126,7 +126,7 @@
                 required
               ></textarea>
             </label>
-            <button class="button button-secondary" type="submit">Send via WhatsApp</button>
+            <button class="button button-secondary" type="submit">Send Enquiry</button>
             <p data-form-message aria-live="polite"></p>
           </form>
         </div>

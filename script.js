@@ -172,51 +172,33 @@ if (packageMessage) {
 }
 
 // Populate contact form with booking details from salon form
-const bookingDetails = sessionStorage.getItem('bookingDetails');
-if (bookingDetails) {
+const bookingDetailsFromSession = sessionStorage.getItem('bookingDetails');
+if (bookingDetailsFromSession) {
   const messageField = document.querySelector('.contact-form textarea[name="message"]');
   if (messageField) {
-    messageField.value = bookingDetails + '\n\n' + (messageField.value || '');
+    const existingMessage = messageField.value || '';
+    messageField.value = bookingDetailsFromSession + (existingMessage ? '\n\n' + existingMessage : '');
   }
   sessionStorage.removeItem('bookingDetails');
 }
 
-for (const form of document.querySelectorAll('[data-soft-submit]')) {
-  form.addEventListener('submit', event => {
-    event.preventDefault();
-    const formData = new FormData(form);
-    const name = formData.get('name') || 'Guest';
-    const email = formData.get('email') || 'not provided';
-    const phone = formData.get('phone') || 'not provided';
-    const type = formData.get('type') || 'Enquiry';
-    const message = formData.get('message') || 'No message provided';
-    
-    // Build WhatsApp message with all form data
-    const whatsappMessage = `Hello Louissa! 👋
-
-I'm submitting an enquiry:
-
-*Name:* ${name}
-*Email:* ${email}
-*Phone:* ${phone}
-*Type:* ${type}
-
-*Message:*
-${message}
-
-Please confirm receipt and let me know next steps!`;
-    
-    const whatsappLink = `https://wa.me/61417713516?text=${encodeURIComponent(whatsappMessage)}`;
-    
-    // Open WhatsApp with pre-filled message
-    window.open(whatsappLink, '_blank');
-    
-    // Show confirmation message
-    const messageEl = form.querySelector('[data-form-message]');
+// Handle Formspree form submission
+const contactForm = document.querySelector('#contact-form');
+if (contactForm && contactForm.action && contactForm.action.includes('formspree')) {
+  contactForm.addEventListener('submit', event => {
+    const messageEl = contactForm.querySelector('[data-form-message]');
     if (messageEl) {
-      messageEl.innerHTML = `<strong>✅ Opening WhatsApp...</strong><p>Your enquiry will be sent to our team. If WhatsApp doesn't open, <a href="${whatsappLink}" target="_blank">click here</a>.</p>`;
+      messageEl.innerHTML = `<strong>Sending your enquiry...</strong>`;
     }
   });
+  
+  // Show success message when returning from Formspree
+  if (new URLSearchParams(window.location.search).get('_next')) {
+    const messageEl = contactForm.querySelector('[data-form-message]');
+    if (messageEl) {
+      messageEl.innerHTML = `<strong>✅ Email sent successfully!</strong><p>Thank you! We'll get back to you within 24 hours.</p>`;
+    }
+  }
 }
 
 // Fallbacks for broken or missing images (replaces with a working gallery image)
