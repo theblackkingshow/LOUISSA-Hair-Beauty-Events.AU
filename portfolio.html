@@ -14,7 +14,8 @@
     <div class="announcement-bar">
       <a href="contact.html">Inspired by the gallery? Request a tailored quote.</a>
       <div class="announcement-contacts">
-        <a href="https://wa.me/61417713516">WhatsApp</a>
+        <a href="https://wa.me/61417713516">WhatsApp booking</a>
+        <a href="mailto:louissahairbeautyandevent@gmail.com">Email booking</a>
         <a href="tel:+61417713516">+61 4177 13516</a>
       </div>
     </div>
@@ -43,7 +44,8 @@
           <a href="portfolio.html">Gallery</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
-          <a class="button button-secondary" href="contact.html">Get a Quote</a>
+          <a class="button button-secondary" href="contact.html">Book Event</a>
+          <a class="button button-ghost" href="salon.html#booking">Book Salon</a>
         </nav>
       </div>
     </header>
@@ -66,7 +68,12 @@
         </div>
       </section>
 
-      <section class="section section-shell">
+      <div class="gallery-tabs reveal" role="tablist" aria-label="Gallery categories">
+        <button class="gallery-tab is-active" type="button" data-gallery-tab="events" role="tab" aria-selected="true">Events Gallery</button>
+        <button class="gallery-tab" type="button" data-gallery-tab="salon" role="tab" aria-selected="false">Salon Gallery</button>
+      </div>
+
+      <section class="section section-shell gallery-panel is-active" data-gallery-panel="events">
         <div class="section-heading reveal">
           <span class="eyebrow">Featured events</span>
           <h2>A selection of event styling and décor.</h2>
@@ -208,7 +215,7 @@
         </div>
       </section>
 
-      <section class="section section-shell">
+      <section class="section section-shell gallery-panel" data-gallery-panel="salon">
         <div class="section-heading center reveal">
           <span class="eyebrow">Salon Gallery</span>
           <h2>Salon styling and beauty work</h2>
@@ -326,9 +333,10 @@
         <div>
           <h3>Contact</h3>
           <ul class="footer-links">
-            <li><a href="mailto:hello@louissaevents.com.au">hello@louissaevents.com.au</a></li>
+            <li><a href="mailto:louissahairbeautyandevent@gmail.com">louissahairbeautyandevent@gmail.com</a></li>
             <li><a href="tel:+61417713516">+61 4177 13516</a></li>
-            <li><a href="https://wa.me/61417713516">WhatsApp</a></li>
+            <li><a href="https://wa.me/61417713516">WhatsApp booking</a></li>
+            <li>49 Marden Grange, Aveley WA 6069</li>
           </ul>
         </div>
         <form class="newsletter-form" data-soft-submit>

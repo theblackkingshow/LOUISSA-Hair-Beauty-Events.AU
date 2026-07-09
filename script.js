@@ -1,6 +1,15 @@
 const menuButton = document.querySelector('.menu-button');
 const nav = document.querySelector('.site-nav');
 
+if (!document.querySelector('.floating-whatsapp')) {
+  const waButton = document.createElement('a');
+  waButton.className = 'floating-whatsapp';
+  waButton.href = `https://wa.me/61417713516?text=${encodeURIComponent(`Hi Louissa Beauty and Events 👋\nI’d like to book:\n1. Service: [Hair / Makeup / Events]\n2. Date: \n3. Location:\n\nThank you!`)}`;
+  waButton.setAttribute('aria-label', 'Book on WhatsApp');
+  waButton.textContent = 'Book on WhatsApp';
+  document.body.appendChild(waButton);
+}
+
 if (menuButton && nav) {
   menuButton.addEventListener('click', () => {
     const isOpen = nav.classList.toggle('is-open');
@@ -20,6 +29,22 @@ const yearNode = document.querySelector('[data-year]');
 if (yearNode) {
   yearNode.textContent = String(new Date().getFullYear());
 }
+
+const galleryTabs = document.querySelectorAll('[data-gallery-tab]');
+const galleryPanels = document.querySelectorAll('.gallery-panel');
+
+galleryTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.galleryTab;
+    galleryTabs.forEach(item => {
+      item.classList.toggle('is-active', item === tab);
+      item.setAttribute('aria-selected', String(item === tab));
+    });
+    galleryPanels.forEach(panel => {
+      panel.classList.toggle('is-active', panel.dataset.galleryPanel === target);
+    });
+  });
+});
 
 const revealNodes = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {
