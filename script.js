@@ -84,10 +84,10 @@ if (bookingForm && confirmation) {
     const mailtoLink = `mailto:louissahairbeautyandevent@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
     
     confirmation.innerHTML = `
-      <strong>Salon Booking Request</strong>
-      <p>Your appointment details for <strong>${service}</strong> on <strong>${date} at ${time}</strong> are ready. Click the button below to send your booking confirmation email:</p>
-      <p><a href="${mailtoLink}" class="button button-secondary">Send Booking Email</a></p>
-      <p style="font-size: 14px; margin-top: 16px;">Or call us at <a href="tel:+61417713516">+61 4177 13516</a></p>
+      <strong>Booking Request Received</strong>
+      <p>Your <strong>${service}</strong> appointment for <strong>${date} at ${time}</strong> is ready to be sent.</p>
+      <p style="margin-top: 16px;"><strong>Send Email:</strong> <a href="${mailtoLink}">Email your booking confirmation</a></p>
+      <p style="margin-top: 12px;"><strong>Or Call:</strong> <a href="tel:+61417713516">+61 4177 13516</a></p>
     `;
     confirmation.classList.add('is-visible');
     confirmation.focus();
@@ -187,7 +187,7 @@ for (const form of document.querySelectorAll('[data-soft-submit]')) {
     
     const messageEl = form.querySelector('[data-form-message]');
     if (messageEl) {
-      messageEl.innerHTML = `Your enquiry has been prepared. <a href="${mailtoLink}" class="button button-secondary" style="display: inline-block; margin-top: 12px;">Send Enquiry Email</a> or call us at <a href="tel:+61417713516">+61 4177 13516</a>`;
+      messageEl.innerHTML = `Your enquiry has been prepared. <p style="margin-top: 12px;"><strong>Send Email:</strong> <a href="${mailtoLink}">Email your enquiry</a></p><p style="margin-top: 12px;"><strong>Or Call:</strong> <a href="tel:+61417713516">+61 4177 13516</a></p>`;
     }
   });
 }
