@@ -1338,3 +1338,322 @@ video {
     width: 100%;
   }
 }
+
+/* Ultra-small phones (320px - 480px) */
+@media (max-width: 480px) {
+  :root {
+    --shell: calc(100vw - 16px);
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 12vw, 3rem);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 5vw, 2.35rem);
+  }
+
+  h3 {
+    font-size: 1.35rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  .announcement-bar {
+    padding: 8px 11px;
+    gap: 8px;
+  }
+
+  .announcement-bar a:first-child {
+    font-size: 0.85rem;
+  }
+
+  .announcement-contacts a {
+    font-size: 0.75rem;
+    padding: 5px 8px;
+  }
+
+  .topline {
+    padding: 10px 0;
+  }
+
+  .brand span strong {
+    font-size: 1rem;
+  }
+
+  .brand span small {
+    font-size: 0.65rem;
+  }
+
+  .hero {
+    min-height: 60vh;
+  }
+
+  .hero-inner {
+    padding: 32px 0 40px;
+    gap: 12px;
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+  }
+
+  .lede {
+    font-size: 1rem;
+  }
+
+  .hero-points {
+    gap: 6px;
+    font-size: 0.85rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+
+  .section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .section-heading {
+    text-align: center;
+  }
+
+  .image-stack img:first-child,
+  .image-stack img:last-child,
+  .feature-image,
+  .cta-band img {
+    height: 220px;
+  }
+
+  .gallery-card,
+  .showcase-item,
+  .map-frame {
+    min-height: 200px;
+  }
+
+  .builder-choice {
+    min-height: 60px;
+    padding: 10px;
+  }
+
+  .builder-fields {
+    gap: 10px;
+  }
+
+  .builder-fields label {
+    font-size: 0.9rem;
+  }
+
+  .builder-fields input,
+  .builder-fields select {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+
+  .builder-total {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .package-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .price {
+    font-size: 1.8rem;
+  }
+
+  .testimonial-card {
+    padding: 16px;
+  }
+
+  .testimonial-card blockquote {
+    font-size: 0.95rem;
+    margin: 0 0 12px;
+  }
+
+  .faq-item {
+    padding: 16px;
+  }
+
+  .faq-item h3 {
+    font-size: 1.2rem;
+  }
+
+  .footer-grid {
+    gap: 16px;
+    padding: 24px 0;
+  }
+
+  .site-footer h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .site-footer p,
+  .site-footer small,
+  .site-footer li {
+    font-size: 0.85rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    padding: 12px 0 18px;
+    gap: 10px;
+    font-size: 0.8rem;
+  }
+
+  .floating-whatsapp {
+    right: 12px;
+    bottom: 12px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  .contact-panel,
+  .booking-panel {
+    padding: 16px;
+  }
+
+  .booking-form label,
+  .contact-form label {
+    font-size: 0.9rem;
+  }
+
+  .booking-form input,
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+
+  .menu-button {
+    top: 12px;
+    padding: 6px 8px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Small tablets (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  :root {
+    --shell: calc(100vw - 24px);
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 4.5vw, 2.35rem);
+  }
+
+  .hero {
+    min-height: 70vh;
+  }
+
+  .hero-inner {
+    padding: 48px 0 56px;
+    gap: 16px;
+  }
+
+  .lede {
+    font-size: 1.05rem;
+  }
+
+  .button {
+    font-size: 0.95rem;
+    padding: 11px 18px;
+  }
+
+  .section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .image-stack img:first-child,
+  .image-stack img:last-child,
+  .feature-image,
+  .cta-band img {
+    height: 300px;
+  }
+
+  .gallery-card,
+  .showcase-item {
+    min-height: 250px;
+  }
+
+  .package-card {
+    padding: 20px;
+  }
+
+  .price {
+    font-size: 2.1rem;
+  }
+
+  .testimonial-card {
+    padding: 18px;
+  }
+
+  .faq-item {
+    padding: 18px;
+  }
+
+  .faq-item h3 {
+    font-size: 1.3rem;
+  }
+
+  .contact-panel,
+  .booking-panel {
+    padding: 20px;
+  }
+
+  .booking-form input,
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    padding: 11px 13px;
+  }
+}
+
+/* Medium tablets (769px - 1024px) - enhancement to existing 1024px query */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .section {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .hero {
+    min-height: 75vh;
+  }
+
+  .image-stack img:first-child {
+    height: 520px;
+  }
+
+  .image-stack img:last-child {
+    height: 320px;
+  }
+
+  .feature-image {
+    height: 480px;
+  }
+}
+
+/* Large desktops and TV screens (1025px+) */
+@media (min-width: 1025px) {
+  .section {
+    padding-top: 92px;
+    padding-bottom: 92px;
+  }
+
+  .hero {
+    min-height: 85vh;
+  }
+}
