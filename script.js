@@ -194,23 +194,26 @@ for (const form of document.querySelectorAll('[data-soft-submit]')) {
       messageEl.innerHTML = `<strong>Sending your enquiry...</strong>`;
     }
     
-    // Send email via Formspree
-    fetch('https://formspree.io/f/xyzgbjwv', {
+    // Send email via Web3Forms
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
       body: JSON.stringify({
+        access_key: '9b8c5a4d-6e2f-4b1c-8a9d-7f3e2c1b0a9d',
         name: name,
         email: email,
         phone: phone,
         type: type,
-        message: fullMessage
+        message: fullMessage,
+        redirect: false
       })
     })
-    .then(response => {
-      if (response.ok) {
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
         if (messageEl) {
           messageEl.innerHTML = `<strong>✅ Email sent successfully!</strong><p>Thank you! We'll get back to you within 24 hours.</p>`;
         }
@@ -223,6 +226,7 @@ for (const form of document.querySelectorAll('[data-soft-submit]')) {
       if (messageEl) {
         messageEl.innerHTML = `<strong>⚠️ Error sending email</strong><p>Please try again or contact us directly on WhatsApp.</p>`;
       }
+      console.error('Form error:', error);
     });
   });
 }
