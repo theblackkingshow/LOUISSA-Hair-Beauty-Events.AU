@@ -83,11 +83,11 @@ if (bookingForm && confirmation) {
     
     const mailtoLink = `mailto:louissahairbeautyandevent@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
     
-    window.location.href = mailtoLink;
-    
     confirmation.innerHTML = `
-      <strong>Salon Booking Request Sent</strong>
-      <p>Your appointment details for <strong>${service}</strong> on <strong>${date} at ${time}</strong> have been prepared. Your email client is opening now. Send the email to confirm your booking. If it doesn't open automatically, <a href="${mailtoLink}">click here</a> or call us at <a href="tel:+61417713516">+61 4177 13516</a>.</p>
+      <strong>Salon Booking Request</strong>
+      <p>Your appointment details for <strong>${service}</strong> on <strong>${date} at ${time}</strong> are ready. Click the button below to send your booking confirmation email:</p>
+      <p><a href="${mailtoLink}" class="button button-secondary">Send Booking Email</a></p>
+      <p style="font-size: 14px; margin-top: 16px;">Or call us at <a href="tel:+61417713516">+61 4177 13516</a></p>
     `;
     confirmation.classList.add('is-visible');
     confirmation.focus();
@@ -185,11 +185,9 @@ for (const form of document.querySelectorAll('[data-soft-submit]')) {
     
     const mailtoLink = `mailto:louissahairbeautyandevent@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
     
-    window.location.href = mailtoLink;
-    
     const messageEl = form.querySelector('[data-form-message]');
     if (messageEl) {
-      messageEl.textContent = 'Opening email client to send your enquiry to louissahairbeautyandevent@gmail.com. If email doesn\'t open, click the link above or call +61 4177 13516.';
+      messageEl.innerHTML = `Your enquiry has been prepared. <a href="${mailtoLink}" class="button button-secondary" style="display: inline-block; margin-top: 12px;">Send Enquiry Email</a> or call us at <a href="tel:+61417713516">+61 4177 13516</a>`;
     }
   });
 }
