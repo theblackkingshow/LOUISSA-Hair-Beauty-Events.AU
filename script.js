@@ -171,6 +171,16 @@ if (packageMessage) {
   }
 }
 
+// Populate contact form with booking details from salon form
+const bookingDetails = sessionStorage.getItem('bookingDetails');
+if (bookingDetails) {
+  const messageField = document.querySelector('.contact-form textarea[name="message"]');
+  if (messageField) {
+    messageField.value = bookingDetails + '\n\n' + (messageField.value || '');
+  }
+  sessionStorage.removeItem('bookingDetails');
+}
+
 for (const form of document.querySelectorAll('[data-soft-submit]')) {
   form.addEventListener('submit', event => {
     event.preventDefault();
