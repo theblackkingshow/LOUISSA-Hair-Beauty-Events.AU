@@ -505,6 +505,8 @@ video {
 .team-card {
   display: block;
   overflow: hidden;
+  border-radius: 16px;
+  background: #111;
 }
 
 .gallery-card img,
@@ -515,6 +517,7 @@ video {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  display: block;
 }
 
 /* Prefer CSS aspect-ratio when available to keep consistent grid heights */
@@ -607,6 +610,7 @@ video {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr 1fr;
   gap: 14px;
+  align-items: stretch;
 }
 
 .gallery-card {
@@ -614,6 +618,7 @@ video {
   overflow: hidden;
   min-height: 320px;
   background: #111;
+  box-shadow: 0 12px 28px rgba(21, 17, 13, 0.12);
 }
 
 .gallery-card.tall {
@@ -651,7 +656,8 @@ video {
 .showcase-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 10px;
+  gap: 12px;
+  align-items: stretch;
 }
 
 .showcase-item {
@@ -659,6 +665,7 @@ video {
   overflow: hidden;
   min-height: 220px;
   background: #15110d;
+  box-shadow: 0 12px 28px rgba(21, 17, 13, 0.12);
 }
 
 .showcase-item.wide {
