@@ -86,8 +86,8 @@ if (bookingForm && confirmation) {
     window.location.href = mailtoLink;
     
     confirmation.innerHTML = `
-      <strong>Opening email client...</strong>
-      <p>Your booking details have been prepared. Your email client will open to send the booking request to our team. If it doesn't open, click <a href="${mailtoLink}">here</a> or <a href="tel:+61417713516">call us at +61 4177 13516</a>.</p>
+      <strong>Salon Booking Request Sent</strong>
+      <p>Your appointment details for <strong>${service}</strong> on <strong>${date} at ${time}</strong> have been prepared. Your email client is opening now. Send the email to confirm your booking. If it doesn't open automatically, <a href="${mailtoLink}">click here</a> or call us at <a href="tel:+61417713516">+61 4177 13516</a>.</p>
     `;
     confirmation.classList.add('is-visible');
     confirmation.focus();
@@ -189,7 +189,7 @@ for (const form of document.querySelectorAll('[data-soft-submit]')) {
     
     const messageEl = form.querySelector('[data-form-message]');
     if (messageEl) {
-      messageEl.textContent = 'Opening email client to send your enquiry. If it doesn\'t open, you can also call us at +61 4177 13516.';
+      messageEl.textContent = 'Opening email client to send your enquiry to louissahairbeautyandevent@gmail.com. If email doesn\'t open, click the link above or call +61 4177 13516.';
     }
   });
 }
