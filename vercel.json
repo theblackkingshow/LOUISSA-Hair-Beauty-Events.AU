@@ -1,0 +1,18 @@
+{
+  "buildCommand": "# Static site - no build needed",
+  "outputDirectory": ".",
+  "public": false,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/$1"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/index",
+      "destination": "/index.html",
+      "permanent": false
+    }
+  ]
+}
