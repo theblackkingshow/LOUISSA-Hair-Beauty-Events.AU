@@ -186,58 +186,36 @@ for (const form of document.querySelectorAll('[data-soft-submit]')) {
     event.preventDefault();
     const formData = new FormData(form);
     const name = formData.get('name') || 'Guest';
-    const email = formData.get('email') || 'no-email-provided';
+    const email = formData.get('email') || 'not provided';
     const phone = formData.get('phone') || 'not provided';
     const type = formData.get('type') || 'Enquiry';
     const message = formData.get('message') || 'No message provided';
     
-    // Include booking details if available
-    let fullMessage = message;
-    const bookingDetails = sessionStorage.getItem('bookingDetails');
-    if (bookingDetails) {
-      fullMessage = `Booking Details:\n${bookingDetails}\n\nAdditional Message:\n${message}`;
-      sessionStorage.removeItem('bookingDetails');
-    }
+    // Build WhatsApp message with all form data
+    const whatsappMessage = `Hello Louissa! 👋
+
+I'm submitting an enquiry:
+
+*Name:* ${name}
+*Email:* ${email}
+*Phone:* ${phone}
+*Type:* ${type}
+
+*Message:*
+${message}
+
+Please confirm receipt and let me know next steps!`;
     
+    const whatsappLink = `https://wa.me/61417713516?text=${encodeURIComponent(whatsappMessage)}`;
+    
+    // Open WhatsApp with pre-filled message
+    window.open(whatsappLink, '_blank');
+    
+    // Show confirmation message
     const messageEl = form.querySelector('[data-form-message]');
     if (messageEl) {
-      messageEl.innerHTML = `<strong>Sending your enquiry...</strong>`;
+      messageEl.innerHTML = `<strong>✅ Opening WhatsApp...</strong><p>Your enquiry will be sent to our team. If WhatsApp doesn't open, <a href="${whatsappLink}" target="_blank">click here</a>.</p>`;
     }
-    
-    // Send email via Web3Forms
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        access_key: '9b8c5a4d-6e2f-4b1c-8a9d-7f3e2c1b0a9d',
-        name: name,
-        email: email,
-        phone: phone,
-        type: type,
-        message: fullMessage,
-        redirect: false
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        if (messageEl) {
-          messageEl.innerHTML = `<strong>✅ Email sent successfully!</strong><p>Thank you! We'll get back to you within 24 hours.</p>`;
-        }
-        form.reset();
-      } else {
-        throw new Error('Form submission failed');
-      }
-    })
-    .catch(error => {
-      if (messageEl) {
-        messageEl.innerHTML = `<strong>⚠️ Error sending email</strong><p>Please try again or contact us directly on WhatsApp.</p>`;
-      }
-      console.error('Form error:', error);
-    });
   });
 }
 
