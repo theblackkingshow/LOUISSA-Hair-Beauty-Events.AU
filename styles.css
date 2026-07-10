@@ -135,6 +135,54 @@ p {
   flex-wrap: wrap;
 }
 
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  color: #22180f;
+  text-decoration: none;
+  font-weight: 700;
+  background: #fff8eb;
+  border: 1px solid rgba(34, 24, 15, 0.14);
+  box-shadow: 0 8px 18px rgba(20, 16, 12, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(20, 16, 12, 0.12);
+  opacity: 0.95;
+}
+
+.social-link svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  fill: currentColor;
+}
+
+.social-link--instagram {
+  color: #fff;
+  background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%);
+}
+
+.social-link--facebook {
+  color: #fff;
+  background: #1877f2;
+}
+
+.social-link--tiktok {
+  color: #fff;
+  background: #000;
+}
+
+.social-links-compact {
+  gap: 10px;
+  margin-top: 8px;
+}
+
 a[href*='wa.me'] {
   display: inline-flex;
   align-items: center;
