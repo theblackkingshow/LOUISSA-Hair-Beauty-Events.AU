@@ -4,7 +4,7 @@ const nav = document.querySelector('.site-nav');
 if (!document.querySelector('.floating-whatsapp')) {
   const waButton = document.createElement('a');
   waButton.className = 'floating-whatsapp';
-  waButton.href = `https://wa.me/61417713516?text=${encodeURIComponent(`Hi Louissa Beauty and Events 👋\nI’d like to book:\n1. Service: [Hair / Makeup / Events]\n2. Date: \n3. Location:\n\nThank you!`)}`;
+  waButton.href = `https://wa.me/61423417069?text=${encodeURIComponent(`Hi Louissa Beauty and Events 👋\nI’d like to book:\n1. Service: [Hair / Makeup / Events]\n2. Date: \n3. Location:\n\nThank you!`)}`;
   waButton.setAttribute('aria-label', 'Book on WhatsApp');
   waButton.textContent = 'Book on WhatsApp';
   document.body.appendChild(waButton);
@@ -144,7 +144,7 @@ if (packageBuilder) {
     ].join('\n');
 
     if (whatsappLink) {
-      whatsappLink.href = `https://wa.me/61417713516?text=${encodeURIComponent(message)}`;
+      whatsappLink.href = `https://wa.me/61423417069?text=${encodeURIComponent(message)}`;
     }
     if (contactLink) {
       contactLink.href = `contact.html?package=${encodeURIComponent(message)}`;
@@ -249,3 +249,27 @@ if (contactForm && contactForm.action && contactForm.action.includes('formspree'
     }
   });
 })();
+
+// Normalize any remaining legacy phone links or visible numbers on DOM ready
+function normalizePhone() {
+  const oldNum = '61417713516';
+  const newNum = '61423417069';
+
+  document.querySelectorAll(`a[href*="${oldNum}"]`).forEach(a => {
+    a.href = a.href.replace(oldNum, newNum);
+  });
+
+  document.querySelectorAll('a[href^="tel:+61417713516"]').forEach(a => {
+    a.href = a.href.replace('+61417713516', '+61423417069');
+    if (a.textContent && a.textContent.includes('+61 4177 13516')) a.textContent = '0423 417 069';
+  });
+
+  // Replace any visible instances of the old formatted number
+  try {
+    document.body.innerHTML = document.body.innerHTML.replace(/\+61 4177 13516/g, '0423 417 069');
+  } catch (e) {
+    // If the page is large or replacement fails, skip gracefuly
+  }
+}
+
+document.addEventListener('DOMContentLoaded', normalizePhone);
